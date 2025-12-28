@@ -15,8 +15,8 @@ body {
 }
 
 .subtitle {
-  color: #1D2B45;
-  opacity: 0.85;
+  color: #16253E;
+  opacity: 0.92;
   margin-top: 10px;
   font-weight: 500;
 }
@@ -66,6 +66,8 @@ body {
   font-size: 1rem;
   line-height: 1.7;
   margin-top: 30px;
+  font-weight: 400;
+  color: #141414;
 }
 
 .back {
@@ -82,9 +84,12 @@ body {
 }
 
 .date {
-  color: #1D2B45;
-  opacity: 0.85;
-  font-weight: 500;
+  color: #16253E;
+  opacity: 0.95;
+  font-weight: 650;
+  margin-top: -10px;
+  margin-bottom: 20px;
 }
+
 
 
