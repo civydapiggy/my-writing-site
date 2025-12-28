@@ -3,20 +3,22 @@ body {
   background: #F5F1E8;
   color: #141414;
   font-family: 'Times New Roman', Times, serif;
-  font-weight: 500;
+  font-weight: 550;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 .container {
   max-width: 850px;
-  margin: auto;
+  margin: 0 auto 0 120px;
   padding: 60px 20px;
 }
 
 .subtitle {
-  opacity: 0.7;
+  color: #1D2B45;
+  opacity: 0.85;
   margin-top: 10px;
+  font-weight: 500;
 }
 
 .button {
@@ -78,4 +80,11 @@ body {
 .back:hover {
   opacity: 0.6;
 }
+
+.date {
+  color: #1D2B45;
+  opacity: 0.85;
+  font-weight: 500;
+}
+
 
