@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  background: #0b0b0f;
+  color: #f5f5f5;
+  font-family: Georgia, serif;
+}
+
+.container {
+  max-width: 850px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+.subtitle {
+  opacity: 0.7;
+  margin-top: 10px;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.2);
+  text-decoration: none;
+  color: white;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.list li {
+  margin: 18px 0;
+}
+
+.list a {
+  color: #f5f5f5;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.list a:hover {
+  opacity: 0.8;
+}
+
+.poem {
+  white-space: pre-wrap;
+  font-family: "Courier New", monospace;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-top: 30px;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 50px;
+  opacity: 0.7;
+  color: white;
+  text-decoration: none;
+}
