@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  background: #0b0b0f;
-  color: #f5f5f5;
-  font-family: Georgia, serif;
+  background: #ccb66f;
+  color: #09023b;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .container {
@@ -60,4 +60,5 @@ body {
   opacity: 0.7;
   color: white;
   text-decoration: none;
+
 }
