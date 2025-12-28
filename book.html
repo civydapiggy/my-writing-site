@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Writing — Book</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- PageFlip library -->
+  <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+
+  <style>
+    /* Center the book */
+    .book-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    /* Book container */
+    #book {
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      border-radius: 8px;
+    }
+
+    /* Each page */
+    .page {
+      background: #F5F1E8;
+      color: #141414;
+      padding: 50px 40px;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    /* Optional: page number */
+    .pagenum {
+      position: absolute;
+      bottom: 20px;
+      right: 25px;
+      opacity: 0.55;
+      font-size: 0.9rem;
+    }
+
+    /* Titles */
+    .page h2 {
+      margin-top: 0;
+      font-size: 2rem;
+    }
+
+    .page .date {
+      color: #16253E;
+      font-weight: 650;
+      margin-top: -10px;
+      margin-bottom: 25px;
+      opacity: 0.95;
+    }
+
+    .poem {
+      font-family: "Courier New", monospace;
+      white-space: pre-wrap;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="book-wrapper">
+    <div id="book">
+      <!-- PAGE 1 -->
+      <div class="page" data-page="home" style="position: relative;">
+        <h2>My Writing</h2>
+        <p class="subtitle">where all my thoughts and wonders roam free</p>
+        <p style="opacity:0.7; margin-top: 40px;">flip the page →</p>
+        <span class="pagenum">1</span>
+      </div>
+
+      <!-- PAGE 2 -->
+      <div class="page" data-page="contents" style="position: relative;">
+        <h2>Contents</h2>
+        <ul>
+          <li><a href="#someone-like-yours">someone like yours</a></li>
+        </ul>
+        <span class="pagenum">2</span>
+      </div>
+
+      <!-- PAGE 3 (left) -->
+      <div class="page" data-page="someone-like-yours" style="position: relative;">
+        <h2>someone like yours</h2>
+        <p class="date">December 27, 2025</p>
+
+        <pre class="poem">
+countless times i lie
+h e a r t b r o k e n
+the s-t-r-i-n-g-s in my soul
+ripped              apart
+with no mercy
+under my tear-stained
+covers and salty pillow
+        </pre>
+
+        <span class="pagenum">3</span>
+      </div>
+
+      <!-- PAGE 4 (right) -->
+      <div class="page" data-page="someone-like-yours-2" style="position: relative;">
+        <pre class="poem">
+s
+  c
+     r
+o
+                 l
+              l
+       i
+n
+   g
+past your posts of her...
+        </pre>
+
+        <span class="pagenum">4</span>
+      </div>
+
+      <!-- Add more pages here -->
+    </div>
+  </div>
+
+  <script>
+    const bookEl = document.getElementById("book");
+
+    // Create page flip instance
+    const pageFlip = new St.PageFlip(bookEl, {
+      width: 550,
+      height: 700,
+      size: "stretch",
+      minWidth: 350,
+      maxWidth: 800,
+      minHeight: 500,
+      maxHeight: 900,
+      showCover: true,
+      mobileScrollSupport: true
+    });
+
+    // Load pages
+    pageFlip.loadFromHTML(document.querySelectorAll(".page"));
+
+    // Jump to a page if URL hash is present
+    function goToHashPage() {
+      const hash = window.location.hash.replace("#", "");
+      if (!hash) return;
+
+      // Find the page index of the matching data-page attribute
+      const pages = [...document.querySelectorAll(".page")];
+      const index = pages.findIndex(p => p.dataset.page === hash);
+      if (index !== -1) {
+        pageFlip.flip(index);
+      }
+    }
+
+    window.addEventListener("hashchange", goToHashPage);
+    setTimeout(goToHashPage, 200); // wait for render
+  </script>
+</body>
+</html>
