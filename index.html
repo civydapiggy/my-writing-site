@@ -27,13 +27,18 @@
 
     /* Each page */
     .page {
-      background: #F5F1E8;
-      color: #141414;
-      padding: 50px 40px;
-      font-family: "Times New Roman", Times, serif;
-      font-size: 1.05rem;
-      line-height: 1.8;
-    }
+  background: #F5F1E8;
+  color: #141414;
+
+  /* add more padding so shadow doesn't overlap text */
+  padding: 70px 70px;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+
+  box-sizing: border-box;
+}
 
     /* Optional: page number */
     .pagenum {
@@ -138,7 +143,7 @@ past your posts of her...
       maxWidth: 800,
       minHeight: 500,
       maxHeight: 900,
-      showCover: true,
+      showCover: false,
       mobileScrollSupport: true
     });
 
@@ -163,3 +168,4 @@ past your posts of her...
   </script>
 </body>
 </html>
+
