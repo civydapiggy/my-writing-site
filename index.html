@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Writing — Book</title>
+  <title>My Writing</title>
   <link rel="stylesheet" href="style.css" />
 
   <!-- PageFlip library -->
@@ -11,18 +11,66 @@
 
   <style>
     /* Center the book */
+    body {
+      margin: 0;
+      background: #F5F1E8;
+    }
+
     .book-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       padding: 40px 20px;
+      width: 100%;
     }
 
     /* Book container */
     #book {
+      width: 1000px;
+      height: 700px;
+      margin: 0 auto;
+
       box-shadow: 0 20px 60px rgba(0,0,0,0.15);
       border-radius: 8px;
+      position: relative;
+    }
+
+    /* Responsive sizing */
+    @media (max-width: 1100px) {
+      #book {
+        width: 92vw;
+        height: 70vh;
+      }
+    }
+
+    /* Middle crease line */
+    #book::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      transform: translateX(-0.5px);
+      background: rgba(20, 20, 20, 0.10);
+      box-shadow: 0 0 10px rgba(0,0,0,0.06);
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* Curve shadow effect */
+    #book::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 60px;
+      transform: translateX(-30px);
+      background: radial-gradient(circle, rgba(0,0,0,0.08), transparent 70%);
+      pointer-events: none;
+      z-index: 998;
     }
 
     /* Each page */
@@ -33,19 +81,17 @@
       font-size: 1.05rem;
       line-height: 1.8;
 
-      /* SAFE padding so hover shadow doesn't cover text */
       padding: 75px 70px;
-
       box-sizing: border-box;
       overflow: hidden;
 
-      /* makes content feel fuller */
       height: 100%;
       display: flex;
       flex-direction: column;
+      position: relative;
     }
 
-    /* Create a gutter like real books (prevents center cutoff) */
+    /* Book gutter: prevents text cut near crease */
     .stf__item.--left .page {
       padding-right: 95px;
       padding-left: 70px;
@@ -55,7 +101,7 @@
       padding-right: 70px;
     }
 
-    /* Make pageflip shadow softer */
+    /* Softer flipping shadow */
     .stf__shadow {
       opacity: 0.55 !important;
       filter: blur(0.5px);
@@ -74,10 +120,19 @@
     .page h2 {
       margin-top: 0;
       font-size: 2rem;
+      font-weight: 700;
+    }
+
+    /* Subtitle */
+    .subtitle {
+      color: #16253E;
+      opacity: 0.92;
+      margin-top: 10px;
+      font-weight: 500;
     }
 
     /* Date styling */
-    .page .date {
+    .date {
       color: #16253E;
       font-weight: 650;
       margin-top: -10px;
@@ -85,7 +140,7 @@
       opacity: 0.95;
     }
 
-    /* Contents list — no bullet + pretty */
+    /* Contents list — no bullets */
     .contents-list {
       list-style: none;
       padding: 0;
@@ -123,7 +178,7 @@
     <div id="book">
 
       <!-- PAGE 1 (LEFT) -->
-      <div class="page" data-page="home" style="position: relative;">
+      <div class="page" data-page="home">
         <h2>My Writing</h2>
         <p class="subtitle">where all my thoughts and wonders roam free</p>
         <p style="opacity:0.7; margin-top: 40px;">flip →</p>
@@ -131,7 +186,7 @@
       </div>
 
       <!-- PAGE 2 (RIGHT) -->
-      <div class="page" data-page="contents" style="position: relative;">
+      <div class="page" data-page="contents">
         <h2>Contents</h2>
         <ul class="contents-list">
           <li><a href="#someone-like-yours">someone like yours</a></li>
@@ -140,7 +195,7 @@
       </div>
 
       <!-- PAGE 3 -->
-      <div class="page" data-page="someone-like-yours" style="position: relative;">
+      <div class="page" data-page="someone-like-yours">
         <h2>someone like yours</h2>
         <p class="date">December 27, 2025</p>
 
@@ -158,7 +213,7 @@ covers and salty pillow
       </div>
 
       <!-- PAGE 4 -->
-      <div class="page" data-page="someone-like-yours-2" style="position: relative;">
+      <div class="page" data-page="someone-like-yours-2">
         <pre class="poem">
 s
   c
@@ -175,8 +230,6 @@ past your posts of her...
         <span class="pagenum">4</span>
       </div>
 
-      <!-- Add more pages here -->
-
     </div>
   </div>
 
@@ -184,18 +237,16 @@ past your posts of her...
     const bookEl = document.getElementById("book");
 
     const pageFlip = new St.PageFlip(bookEl, {
-      width: 550,
-      height: 700,
-      size: "stretch",
-      minWidth: 350,
-      maxWidth: 800,
-      minHeight: 500,
-      maxHeight: 900,
-
-      /* IMPORTANT: makes page 1 left + page 2 right */
+      width: 500,          // single page width
+      height: 700,         // page height
+      size: "fixed",
       showCover: false,
 
-      mobileScrollSupport: true
+      flippingTime: 450,
+      maxShadowOpacity: 0.4,
+      useMouseEvents: true,
+
+      mobileScrollSupport: false
     });
 
     pageFlip.loadFromHTML(document.querySelectorAll(".page"));
