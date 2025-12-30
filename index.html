@@ -19,12 +19,12 @@
       padding: 40px 20px;
     }
 
-/* Book container */
-#book {
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-  border-radius: 8px;
-}
-    
+    /* Book container */
+    #book {
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      border-radius: 8px;
+    }
+
     /* Each page */
     .page {
       background: #F5F1E8;
@@ -116,7 +116,6 @@
       color: #141414;
     }
   </style>
-  
 </head>
 
 <body>
@@ -184,18 +183,14 @@ past your posts of her...
   <script>
     const bookEl = document.getElementById("book");
 
-   const pageFlip = new St.PageFlip(bookEl, {
-  width: 550,
-  height: 700,
-  size: "stretch",
-  minWidth: 350,
-  maxWidth: 800,
-  minHeight: 500,
-  maxHeight: 900,
-  showCover: false,
-  mobileScrollSupport: true,
-  flippingTime: 450
-});
+    const pageFlip = new St.PageFlip(bookEl, {
+      width: 550,
+      height: 700,
+      size: "stretch",
+      minWidth: 350,
+      maxWidth: 800,
+      minHeight: 500,
+      maxHeight: 900,
 
       /* IMPORTANT: makes page 1 left + page 2 right */
       showCover: false,
@@ -222,5 +217,3 @@ past your posts of her...
   </script>
 </body>
 </html>
-
-
