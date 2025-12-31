@@ -21,20 +21,20 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      padding: 40px 20px;
+      padding: 15px 10px;
       width: 100%;
     }
 
     /* Book container */
-    #book {
-      width: 1000px;
-      height: 700px;
-      margin: 0 auto;
+#book {
+  width: min(1300px, 95vw);
+  height: min(800px, 85vh);
+  margin: 0 auto;
 
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-      border-radius: 8px;
-      position: relative;
-    }
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  position: relative;
+}}
 
     /* Responsive sizing */
     @media (max-width: 1100px) {
@@ -45,33 +45,19 @@
     }
 
     /* Middle crease line */
-    #book::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 1px;
-      transform: translateX(-0.5px);
-      background: rgba(20, 20, 20, 0.10);
-      box-shadow: 0 0 10px rgba(0,0,0,0.06);
-      pointer-events: none;
-      z-index: 999;
-    }
+#book::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-0.5px);
+  background: rgba(20, 20, 20, 0.08);
+  pointer-events: none;
+  z-index: 999;
+}
 
-    /* Curve shadow effect */
-    #book::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 60px;
-      transform: translateX(-30px);
-      background: radial-gradient(circle, rgba(0,0,0,0.08), transparent 70%);
-      pointer-events: none;
-      z-index: 998;
-    }
 
     /* Each page */
     .page {
@@ -236,18 +222,18 @@ past your posts of her...
   <script>
     const bookEl = document.getElementById("book");
 
-    const pageFlip = new St.PageFlip(bookEl, {
-      width: 500,          // single page width
-      height: 700,         // page height
-      size: "fixed",
-      showCover: false,
+const pageFlip = new St.PageFlip(bookEl, {
+  width: 600,          
+  height: 800,         
+  size: "stretch",
+  showCover: false,
 
-      flippingTime: 450,
-      maxShadowOpacity: 0.4,
-      useMouseEvents: true,
+  flippingTime: 450,
+  maxShadowOpacity: 0.4,
+  useMouseEvents: true,
 
-      mobileScrollSupport: false
-    });
+  mobileScrollSupport: false
+});
 
     pageFlip.loadFromHTML(document.querySelectorAll(".page"));
 
@@ -268,3 +254,4 @@ past your posts of her...
   </script>
 </body>
 </html>
+
