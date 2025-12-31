@@ -27,14 +27,20 @@
 
     /* Book container */
 #book {
-  width: min(1300px, 95vw);
-  height: min(800px, 85vh);
+  width: min(1450px, 97vw);
+  height: min(860px, 88vh);
   margin: 0 auto;
 
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-  border-radius: 8px;
+  border: 1px solid rgba(20, 20, 20, 0.12);
+  background: #F5F1E8;
+
+  box-shadow:
+    0 22px 70px rgba(0,0,0,0.16),
+    inset 0 0 0 1px rgba(255,255,255,0.25);
+
+  border-radius: 10px;
   position: relative;
-}}
+}
 
     /* Responsive sizing */
     @media (max-width: 1100px) {
@@ -62,12 +68,13 @@
     /* Each page */
     .page {
       background: #F5F1E8;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.06), transparent 25%);
       color: #141414;
       font-family: "Times New Roman", Times, serif;
       font-size: 1.05rem;
       line-height: 1.8;
 
-      padding: 75px 70px;
+      padding: 80px 78px;
       box-sizing: border-box;
       overflow: hidden;
 
@@ -79,13 +86,14 @@
 
     /* Book gutter: prevents text cut near crease */
     .stf__item.--left .page {
-      padding-right: 95px;
-      padding-left: 70px;
-    }
-    .stf__item.--right .page {
-      padding-left: 95px;
-      padding-right: 70px;
-    }
+  padding-right: 115px;
+  padding-left: 78px;
+}
+
+.stf__item.--right .page {
+  padding-left: 115px;
+  padding-right: 78px;
+}
 
     /* Softer flipping shadow */
     .stf__shadow {
@@ -102,12 +110,19 @@
       font-size: 0.9rem;
     }
 
+.stf__item.--left .pagenum,
+.stf__item.--right .pagenum {
+  right: 30px;
+}
+
     /* Titles */
     .page h2 {
-      margin-top: 0;
-      font-size: 2rem;
-      font-weight: 700;
-    }
+  margin-top: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  max-width: 100%;
+  word-break: break-word;
+}
 
     /* Subtitle */
     .subtitle {
@@ -254,4 +269,5 @@ const pageFlip = new St.PageFlip(bookEl, {
   </script>
 </body>
 </html>
+
 
