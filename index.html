@@ -79,7 +79,7 @@
   font-size: 1.05rem;
   line-height: 1.8;
 
-  padding: 75px 70px;
+  padding: 85px 85px;
   box-sizing: border-box;
   overflow: hidden;
 
@@ -91,13 +91,13 @@
 
     /* Book gutter: prevents text cut near crease */
     .stf__item.--left .page {
-  padding-right: 115px;
-  padding-left: 78px;
+  padding-right: 135px;
+  padding-left: 85px;
 }
 
 .stf__item.--right .page {
-  padding-left: 115px;
-  padding-right: 78px;
+  padding-left: 135px;
+  padding-right: 85px;
 }
 
     /* Softer flipping shadow */
@@ -123,19 +123,20 @@
     /* Titles */
     .page h2 {
   margin-top: 0;
-  font-size: 2rem;
+  font-size: 1.85rem;
   font-weight: 700;
   max-width: 100%;
-  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
     /* Subtitle */
     .subtitle {
-      color: #16253E;
-      opacity: 0.92;
-      margin-top: 10px;
-      font-weight: 500;
-    }
+  color: #16253E;
+  opacity: 0.92;
+  margin-top: 10px;
+  font-weight: 500;
+  max-width: 90%;
+}
 
     /* Date styling */
     .date {
@@ -274,6 +275,7 @@ const pageFlip = new St.PageFlip(bookEl, {
   </script>
 </body>
 </html>
+
 
 
 
