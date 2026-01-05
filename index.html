@@ -14,74 +14,63 @@
       background: #F5F1E8;
     }
 
-    /* Center the book */
     .book-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      padding: 15px 10px;
       width: 100%;
-      padding: 10px;
     }
 
-    /* Book frame (clear + fills screen) */
+    /* Book container — matches your “before” look */
     #book {
-      width: min(1500px, 98vw);
-      height: min(880px, 92vh);
+      width: min(1400px, 96vw);
+      height: min(820px, 90vh);
 
-      border: 1px solid rgba(20, 20, 20, 0.16);
       border-radius: 10px;
-
       background: #F5F1E8;
 
-      box-shadow:
-        0 28px 90px rgba(0,0,0,0.18),
-        inset 0 0 0 1px rgba(255,255,255,0.35);
-
+      box-shadow: 0 22px 70px rgba(0,0,0,0.16);
       overflow: hidden;
     }
 
-    /* Each page — FULLY OPAQUE thick paper */
+    /* Each page — FULL OPAQUE paper (no see-through) */
     .page {
       background: #F5F1E8 !important;
       color: #141414;
 
       font-family: "Times New Roman", Times, serif;
-      font-size: 1.08rem;
-      line-height: 1.85;
+      font-size: 1.05rem;
+      line-height: 1.8;
 
-      padding: 95px 95px;
+      padding: 85px 85px;
       box-sizing: border-box;
-      height: 100%;
 
+      height: 100%;
       display: flex;
       flex-direction: column;
-
       position: relative;
 
-      /* prevents see-through / “thin paper” look */
       opacity: 1 !important;
       backface-visibility: hidden;
       transform: translateZ(0);
-
-      /* subtle paper border effect */
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
     }
 
-    /* Wide gutter margins so nothing clips */
+    /* Bigger gutter so words never get cut */
     .stf__item.--left .page {
-      padding-right: 170px;
-      padding-left: 95px;
+      padding-right: 150px;
+      padding-left: 85px;
     }
 
     .stf__item.--right .page {
-      padding-left: 170px;
-      padding-right: 95px;
+      padding-left: 150px;
+      padding-right: 85px;
     }
 
-    /* Softer shadow while flipping */
+    /* Softer flip shadow */
     .stf__shadow {
-      opacity: 0.45 !important;
+      opacity: 0.55 !important;
       filter: blur(0.3px);
     }
 
@@ -94,7 +83,6 @@
       overflow-wrap: break-word;
     }
 
-    /* Subtitle */
     .subtitle {
       color: #16253E;
       opacity: 0.92;
@@ -103,7 +91,6 @@
       max-width: 90%;
     }
 
-    /* Date */
     .date {
       color: #16253E;
       font-weight: 650;
@@ -112,7 +99,6 @@
       opacity: 0.95;
     }
 
-    /* Contents list */
     .contents-list {
       list-style: none;
       padding: 0;
@@ -134,7 +120,6 @@
       opacity: 0.7;
     }
 
-    /* Poems */
     .poem {
       flex: 1;
       margin-top: 30px;
@@ -146,19 +131,15 @@
       font-size: 1rem;
       line-height: 1.7;
 
-      color: #141414;
-
-      /* prevents any overflow */
       max-width: 100%;
       overflow-wrap: anywhere;
       word-break: break-word;
     }
 
-    /* Page numbers */
     .pagenum {
       position: absolute;
-      bottom: 22px;
-      right: 32px;
+      bottom: 20px;
+      right: 30px;
       opacity: 0.55;
       font-size: 0.9rem;
     }
@@ -229,12 +210,14 @@ past your posts of her...
     const bookEl = document.getElementById("book");
 
     const pageFlip = new St.PageFlip(bookEl, {
-      width: 750,
-      height: 880,
-      size: "fixed",
+      width: 700,
+      height: 820,
+      size: "stretch",
 
       showCover: false,
-      useMouseEvents: true,
+
+      usePortrait: false,          
+      autoSize: true,
 
       flippingTime: 450,
       maxShadowOpacity: 0.45,
@@ -244,7 +227,6 @@ past your posts of her...
 
     pageFlip.loadFromHTML(document.querySelectorAll(".page"));
 
-    // Jump to a page if URL hash exists
     function goToHashPage() {
       const hash = window.location.hash.replace("#", "");
       if (!hash) return;
