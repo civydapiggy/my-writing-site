@@ -3,95 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Writing</title>
+  <title>My Writing — Book</title>
+  <link rel="stylesheet" href="style.css" />
 
   <!-- PageFlip library -->
-  <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
 
   <style>
-    body {
-      margin: 0;
-      background: #F5F1E8;
-    }
-
+    /* Center the book */
     .book-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      padding: 15px 10px;
-      width: 100%;
+      padding: 40px 20px;
     }
 
-    /* Book container — matches your “before” look */
+    /* Book container */
     #book {
-      width: min(1400px, 96vw);
-      height: min(820px, 90vh);
-
-      border-radius: 10px;
-      background: #F5F1E8;
-
-      box-shadow: 0 22px 70px rgba(0,0,0,0.16);
-      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      border-radius: 8px;
     }
 
-    /* Each page — FULL OPAQUE paper (no see-through) */
+    /* Each page */
     .page {
-      background: #F5F1E8 !important;
+      background: #F5F1E8;
       color: #141414;
-
+      padding: 50px 40px;
       font-family: "Times New Roman", Times, serif;
       font-size: 1.05rem;
       line-height: 1.8;
-
-      padding: 85px 85px;
-      box-sizing: border-box;
-
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-
-      opacity: 1 !important;
-      backface-visibility: hidden;
-      transform: translateZ(0);
     }
 
-    /* Bigger gutter so words never get cut */
-    .stf__item.--left .page {
-      padding-right: 150px;
-      padding-left: 85px;
-    }
-
-    .stf__item.--right .page {
-      padding-left: 150px;
-      padding-right: 85px;
-    }
-
-    /* Softer flip shadow */
-    .stf__shadow {
-      opacity: 0.55 !important;
-      filter: blur(0.3px);
+    /* Optional: page number */
+    .pagenum {
+      position: absolute;
+      bottom: 20px;
+      right: 25px;
+      opacity: 0.55;
+      font-size: 0.9rem;
     }
 
     /* Titles */
     .page h2 {
       margin-top: 0;
       font-size: 2rem;
-      font-weight: 700;
-      max-width: 100%;
-      overflow-wrap: break-word;
     }
 
-    .subtitle {
-      color: #16253E;
-      opacity: 0.92;
-      margin-top: 10px;
-      font-weight: 500;
-      max-width: 90%;
-    }
-
-    .date {
+    .page .date {
       color: #16253E;
       font-weight: 650;
       margin-top: -10px;
@@ -99,49 +58,10 @@
       opacity: 0.95;
     }
 
-    .contents-list {
-      list-style: none;
-      padding: 0;
-      margin: 30px 0 0;
-    }
-
-    .contents-list li {
-      margin: 18px 0;
-    }
-
-    .contents-list a {
-      color: #16253E;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(29, 43, 69, 0.3);
-      font-weight: 600;
-    }
-
-    .contents-list a:hover {
-      opacity: 0.7;
-    }
-
     .poem {
-      flex: 1;
-      margin-top: 30px;
-
       font-family: "Courier New", monospace;
       white-space: pre-wrap;
-
       font-weight: 500;
-      font-size: 1rem;
-      line-height: 1.7;
-
-      max-width: 100%;
-      overflow-wrap: anywhere;
-      word-break: break-word;
-    }
-
-    .pagenum {
-      position: absolute;
-      bottom: 20px;
-      right: 30px;
-      opacity: 0.55;
-      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -149,26 +69,25 @@
 <body>
   <div class="book-wrapper">
     <div id="book">
-
       <!-- PAGE 1 -->
-      <div class="page" data-page="home">
+      <div class="page" data-page="home" style="position: relative;">
         <h2>My Writing</h2>
         <p class="subtitle">where all my thoughts and wonders roam free</p>
-        <p style="opacity:0.7; margin-top: 50px;">flip →</p>
+        <p style="opacity:0.7; margin-top: 40px;">flip the page →</p>
         <span class="pagenum">1</span>
       </div>
 
       <!-- PAGE 2 -->
-      <div class="page" data-page="contents">
+      <div class="page" data-page="contents" style="position: relative;">
         <h2>Contents</h2>
-        <ul class="contents-list">
+        <ul>
           <li><a href="#someone-like-yours">someone like yours</a></li>
         </ul>
         <span class="pagenum">2</span>
       </div>
 
-      <!-- PAGE 3 -->
-      <div class="page" data-page="someone-like-yours">
+      <!-- PAGE 3 (left) -->
+      <div class="page" data-page="someone-like-yours" style="position: relative;">
         <h2>someone like yours</h2>
         <p class="date">December 27, 2025</p>
 
@@ -185,8 +104,8 @@ covers and salty pillow
         <span class="pagenum">3</span>
       </div>
 
-      <!-- PAGE 4 -->
-      <div class="page" data-page="someone-like-yours-2">
+      <!-- PAGE 4 (right) -->
+      <div class="page" data-page="someone-like-yours-2" style="position: relative;">
         <pre class="poem">
 s
   c
@@ -203,44 +122,44 @@ past your posts of her...
         <span class="pagenum">4</span>
       </div>
 
+      <!-- Add more pages here -->
     </div>
   </div>
 
   <script>
     const bookEl = document.getElementById("book");
 
+    // Create page flip instance
     const pageFlip = new St.PageFlip(bookEl, {
-      width: 700,
-      height: 820,
+      width: 550,
+      height: 700,
       size: "stretch",
-
-      showCover: false,
-
-      usePortrait: false,          
-      autoSize: true,
-
-      flippingTime: 450,
-      maxShadowOpacity: 0.45,
-
-      mobileScrollSupport: false
+      minWidth: 350,
+      maxWidth: 800,
+      minHeight: 500,
+      maxHeight: 900,
+      showCover: true,
+      mobileScrollSupport: true
     });
 
+    // Load pages
     pageFlip.loadFromHTML(document.querySelectorAll(".page"));
 
+    // Jump to a page if URL hash is present
     function goToHashPage() {
       const hash = window.location.hash.replace("#", "");
       if (!hash) return;
 
+      // Find the page index of the matching data-page attribute
       const pages = [...document.querySelectorAll(".page")];
       const index = pages.findIndex(p => p.dataset.page === hash);
-
       if (index !== -1) {
         pageFlip.flip(index);
       }
     }
 
     window.addEventListener("hashchange", goToHashPage);
-    setTimeout(goToHashPage, 150);
+    setTimeout(goToHashPage, 200); // wait for render
   </script>
 </body>
 </html>
