@@ -26,14 +26,30 @@
     }
 
     /* Each page */
-    .page {
-      background: #F5F1E8;
-      color: #141414;
-      padding: 50px 40px;
-      font-family: "Times New Roman", Times, serif;
-      font-size: 1.05rem;
-      line-height: 1.8;
-    }
+   .page {
+  background: #F5F1E8;
+  /* Add a subtle gradient to simulate paper grain/lighting */
+  background-image: linear-gradient(to right, rgba(0,0,0,0.03) 0%, rgba(255,255,255,0) 5%, rgba(255,255,255,0) 95%, rgba(0,0,0,0.03) 100%);
+  color: #141414;
+  padding: 50px 40px;
+  font-family: "Times New Roman", Times, serif;
+  box-sizing: border-box; /* Ensures padding doesn't break the layout */
+  
+  /* These help with the rendering of the "curl" */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* This adds a "spine" shadow when the book is open */
+.page.-left {
+  border-right: 1px solid rgba(0,0,0,0.1);
+  box-shadow: inset -7px 0 10px -7px rgba(0,0,0,0.2);
+}
+
+.page.-right {
+  border-left: 1px solid rgba(0,0,0,0.1);
+  box-shadow: inset 7px 0 10px -7px rgba(0,0,0,0.2);
+}
 
     /* Optional: page number */
     .pagenum {
@@ -131,16 +147,21 @@ past your posts of her...
 
     // Create page flip instance
     const pageFlip = new St.PageFlip(bookEl, {
-      width: 550,
-      height: 700,
-      size: "stretch",
-      minWidth: 350,
-      maxWidth: 800,
-      minHeight: 500,
-      maxHeight: 900,
-      showCover: true,
-      mobileScrollSupport: true
-    });
+  width: 550,
+  height: 700,
+  size: "stretch",
+  minWidth: 350,
+  maxWidth: 800,
+  minHeight: 500,
+  maxHeight: 900,
+  showCover: true,
+  mobileScrollSupport: true,
+  // --- ADD THESE FOR THE CURL EFFECT ---
+  drawShadow: true,      // Essential for depth
+  flippingTime: 1000,    // Slows it down slightly to see the curve
+  usePortrait: true,     // Helps with the "bend" logic on single pages
+  startPage: 0
+});
 
     // Load pages
     pageFlip.loadFromHTML(document.querySelectorAll(".page"));
@@ -163,3 +184,4 @@ past your posts of her...
   </script>
 </body>
 </html>
+
