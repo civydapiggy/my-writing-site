@@ -12,13 +12,24 @@
   <style>
     /* Center the book */
     .book-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 40px 20px;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  width: 100vw;
+  height: 100vh;
+
+  padding: 16px;
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+}
     /* Book container */
     #book {
       box-shadow: 0 20px 60px rgba(0,0,0,0.15);
@@ -146,23 +157,37 @@ past your posts of her...
   </div>
 
   <script>
-    const bookEl = document.getElementById("book");
+const bookEl = document.getElementById("book");
 
-    // Create page flip instance
-    const pageFlip = new St.PageFlip(bookEl, {
-  width: 550,
-  height: 700,
-  size: "stretch",
-  minWidth: 350,
-  maxWidth: 800,
-  minHeight: 500,
-  maxHeight: 900,
+/* Size the book so the WHOLE open book fits on screen */
+const availableWidth = window.innerWidth - 40;
+const availableHeight = window.innerHeight - 40;
+
+/* Original page ratio = 550 / 700 */
+const pageRatio = 550 / 700;
+
+/* Width available for ONE page */
+const widthFromScreen = availableWidth / 2;
+
+/* Width allowed by screen height */
+const widthFromHeight = availableHeight * pageRatio;
+
+/* Choose whichever is smaller so nothing gets cut off */
+const pageWidth = Math.min(widthFromScreen, widthFromHeight);
+const pageHeight = pageWidth / pageRatio;
+
+const pageFlip = new St.PageFlip(bookEl, {
+  width: pageWidth,
+  height: pageHeight,
+
+  size: "fixed",
+
   showCover: true,
   mobileScrollSupport: true,
-  // --- ADD THESE FOR THE CURL EFFECT ---
-  drawShadow: true,      // Essential for depth
-  flippingTime: 1000,    // Slows it down slightly to see the curve
-  usePortrait: true,     // Helps with the "bend" logic on single pages
+
+  drawShadow: true,
+  flippingTime: 1000,
+  usePortrait: true,
   startPage: 0
 });
 
